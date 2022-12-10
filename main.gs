@@ -61,9 +61,9 @@ const fetchFunction = (searchString) => {
 async function URLFETCH(input) {
   const url = String(input);
   const fixed = cleanURL(url);
-
-  if (fixed === undefined) {
-    return "URL ISSUE";
+  if (/[\.\w]+/g.test(fixed)) {
+    return fetchFunction(fixed);
+  } else {
+    return "Not url";
   }
-  return fetchFunction(fixed);
 }
